@@ -1,8 +1,8 @@
-package com.handygridview.example.widget;
+﻿package com.handygridview.example.widget;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -55,3 +55,4 @@ public class CustomLinearLayout extends LinearLayout {
         return index;
     }
 }
+

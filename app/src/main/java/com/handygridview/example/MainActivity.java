@@ -1,4 +1,4 @@
-package com.handygridview.example;
+﻿package com.handygridview.example;
 
 import android.Manifest;
 import android.app.Activity;
@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
@@ -70,8 +70,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         setMode(HandyGridView.MODE.LONG_PRESS);
         mGridView.setAutoOptimize(false);
-        //当gridview可以滚动并且被拖动的item位于gridview的顶部或者底部时，设置gridview滚屏的速度，
-        // 每秒移动的像素点个数，默认750，可不设置。
+        //褰揼ridview鍙互婊氬姩骞朵笖琚嫋鍔ㄧ殑item浣嶄簬gridview鐨勯《閮ㄦ垨鑰呭簳閮ㄦ椂锛岃缃甮ridview婊氬睆鐨勯€熷害锛?
+        // 姣忕绉诲姩鐨勫儚绱犵偣涓暟锛岄粯璁?50锛屽彲涓嶈缃€?
         mGridView.setScrollSpeed(750);
 //        adapter.notifyDataSetChanged();
         mGridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -110,7 +110,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if (!mGridView.isNoneMode()) {
                     int offsetX = -DensityUtil.dip2px(MainActivity.this, 10);
                     int offsetY = -DensityUtil.dip2px(MainActivity.this, 10);
-                    //文字绘制于gridview的右下角，并向左，向上偏移10dp。
+                    //鏂囧瓧缁樺埗浜巊ridview鐨勫彸涓嬭锛屽苟鍚戝乏锛屽悜涓婂亸绉?0dp銆?
                     drawTips(canvas, width + offsetX, height + offsetY);
                 }
             }
@@ -122,7 +122,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         recoveryTagTv.setOnClickListener(this);
     }
 
-    String paintText = "长按排序或删除";
+    String paintText = "闀挎寜鎺掑簭鎴栧垹闄?;
     int textWidth;
     int textHeight;
     StaticLayout tipsLayout;
@@ -152,16 +152,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (id) {
             case R.id.text_enable_selector:
                 boolean isSelectorEnabled = mGridView.isSelectorEnabled();
-                //建议传入false,不要开启selector,不然item移动以后，在item原来的位置会有残影逐渐消失的效果。
-                //默认是false。
+                //寤鸿浼犲叆false,涓嶈寮€鍚痵elector,涓嶇劧item绉诲姩浠ュ悗锛屽湪item鍘熸潵鐨勪綅缃細鏈夋畫褰遍€愭笎娑堝け鐨勬晥鏋溿€?
+                //榛樿鏄痜alse銆?
                 mGridView.setSelectorEnabled(!isSelectorEnabled);
-                enableSelectorTv.setText(!isSelectorEnabled ? "selector已开启" : "selector已关闭");
+                enableSelectorTv.setText(!isSelectorEnabled ? "selector宸插紑鍚? : "selector宸插叧闂?);
                 break;
             case R.id.text_change_mode:
                 HandyGridView.MODE curMode = mGridView.getMode();
                 int index = HandyGridView.MODE.indexOf(curMode);
                 index = (index + 1) % HandyGridView.MODE.values().length;
-                //有三种模式分别是点击拖动，长按拖动和不拖动，分别对应的是TOUCH,LONG_PRESS和NONE
+                //鏈変笁绉嶆ā寮忓垎鍒槸鐐瑰嚮鎷栧姩锛岄暱鎸夋嫋鍔ㄥ拰涓嶆嫋鍔紝鍒嗗埆瀵瑰簲鐨勬槸TOUCH,LONG_PRESS鍜孨ONE
                 setMode(HandyGridView.MODE.get(index));
                 break;
             case R.id.text_add_tag:
@@ -177,7 +177,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void recoveryTag() {
         for (Iterator<String> iter = strList.iterator(); iter.hasNext(); ) {
             String str = iter.next();
-            if (str.contains("更多")) {
+            if (str.contains("鏇村")) {
                 iter.remove();
             }
         }
@@ -188,7 +188,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void addTag() {
         for (int i = 0; i < 4; i++) {
-            strList.add("更多 "+(strList.size()-1));
+            strList.add("鏇村 "+(strList.size()-1));
         }
         adapter.setData(strList);
         outLayout.setClipChildren(true);
@@ -210,20 +210,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //        for (int i = 0; i < 10; i++) {
 //            strList.add("ITEM " + i);
 //        }
-        strList.add("头条");
-        strList.add("轻松一刻");
-        strList.add("视频");
-        strList.add("娱乐");
-        strList.add("段子");
-        strList.add("跟帖");
-        strList.add("活力学院");
-        strList.add("北京");
-        strList.add("社会");
-        strList.add("军事");
-        strList.add("热点");
-        strList.add("直播");
-        strList.add("网易号");
-        strList.add("房产");
+        strList.add("澶存潯");
+        strList.add("杞绘澗涓€鍒?);
+        strList.add("瑙嗛");
+        strList.add("濞变箰");
+        strList.add("娈靛瓙");
+        strList.add("璺熷笘");
+        strList.add("娲诲姏瀛﹂櫌");
+        strList.add("鍖椾含");
+        strList.add("绀句細");
+        strList.add("鍐涗簨");
+        strList.add("鐑偣");
+        strList.add("鐩存挱");
+        strList.add("缃戞槗鍙?);
+        strList.add("鎴夸骇");
     }
 
 }
+
